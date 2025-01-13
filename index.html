@@ -1,15 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "dTZRwe9CQ2eet5b4c",
+            });
+        })();
+    </script>
 </head>
-<body>
-    <ul>
-<li><a href="./images/about us.html">about us</a></li> <br> <br>
-<li><a href="./images/contact us.html">contact us</a></li>
 
-    </ul>
+<body>
+
+
+
+
+
+    <label for="">username
+        <input id="username" type="text">
+    </label>
+    <br>
+    <label for="">email
+        <input id="email" type="email">
+    </label>
+    <br>
+
+    <label for="subject">
+        <input id="subject" type="text">
+    </label>
+    <br>
+
+    <label for="message">
+        <input id="message" type="text">
+    </label>
+    <br>
+
+    <button onclick="submit()">submit</button>
+    <script>
+        function submit() {
+            let username = document.getElementById("username").value
+            let email = document.getElementById("email").value
+            let subject = document.getElementById("subject").value
+            let message = document.getElementById("message").value
+
+let para = {
+    username: username,
+    email: email,
+    subject: subject,
+    message: message,
+
+}
+emailjs.send("service_zjlklop","template_rzj1394",para).then(result=>{
+    alert("send")
+}).catch(error=>{
+    alert("not send")
+
+})
+
+        }
+
+    </script>
 </body>
+
 </html>
